@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size='3'>
+
+      </ion-col>
+      <ion-col size='6'>
+        <ion-card>
+          <ion-list>
+            <ion-item >
+              Name: {{userDetails.name[0].value}}
+            </ion-item>
+        
+           
+          </ion-list>
+          <ion-button size='block' (click)='logout()'>Logout</ion-button>
+        </ion-card>
+      </ion-col>
+      <ion-col size='3'>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

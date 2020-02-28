@@ -1,0 +1,72 @@
+<ion-content  >
+<ion-header role="banner">
+
+  <div class="logo"><a href="#"><img id="logo-navbar-middle" src="http://www.dalro.co.za/images/yootheme/logo.png" width="200" alt="Logo Thing main logo"></a></div>
+  <nav id="navbar-primary" class="navbar" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a [routerLink]="['/']">Home</a></li>
+          <li><a href="#" >About</a></li>
+          <li><a [routerLink]="['/account']">Account</a></li>
+          <li><a [routerLink]="['/register']">Login/Register</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  </ion-header>
+
+
+
+  <p></p>
+  <ion-card-title class="container">Enter the title ISBN of book, journal or magazine to find materials to licenses. <br> Hit Search and you are off!</ion-card-title>
+  <ion-toolbar mode='md' class="container"  >
+
+    <ion-searchbar [(ngModel)]='searchText' class="search" slot='start' placeholder='Search books..'></ion-searchbar>
+  <ion-button  color='primary' slot='start' (click)='search()'>Search</ion-button>
+  </ion-toolbar>
+
+  <ion-grid *ngIf='bookApi.searchedBooks.length'>
+    <ion-row class="ion-text-center">
+      <ion-col *ngFor='let i of bookApi.searchedBooks' size-lg='4' size-xs='12' size-sm='6' size-xl='3' size-md='6'>
+      <ion-card  class="card1">
+        <ion-img *ngIf='i.volumeInfo.imageLinks' src={{i.volumeInfo.imageLinks.thumbnail}}></ion-img>
+        <ion-card-content>
+          <b>{{i.volumeInfo.title}}</b>
+          <!-- <p>{{i.volumeInfo.subtitle}}</p> -->
+          <p color='primary' *ngIf='i.saleInfo.listPrice'>{{i.saleInfo.listPrice.amount}} {{i.saleInfo.listPrice.currencyCode}}</p>
+        </ion-card-content>
+          <ion-button color='light' (click)='view(i);'><ion-icon name="eye-outline"></ion-icon></ion-button>
+          <ion-button color='light' (click)='add(i)' >Request License<ion-icon slot='end' name="cart-outline"></ion-icon></ion-button>
+      </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<ion-card class="cat container" >
+  <ion-card-header>Catalogue<span class="badge badge-secondary">Local</span></ion-card-header>
+  <ion-card-content class="col col-md-8">
+    <div class="list-group" >
+      <a  class="list-group-item list-group-item-action" *ngFor="let item of data.works">
+       {{ item._source.work_title }}
+      </a>
+    </div>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-text-center">
+    <ion-badge color='danger'>{{bookApi.cart.length}}</ion-badge>
+    <ion-fab-button (click)='cart()'>
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

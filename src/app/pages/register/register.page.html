@@ -1,0 +1,52 @@
+<ion-header role="banner">
+
+  <div class="logo"><a href="#"><img id="logo-navbar-middle" src="http://www.dalro.co.za/images/yootheme/logo.png" width="200" alt="Logo Thing main logo"></a></div>
+  <nav id="navbar-primary" class="navbar" role="navigation">
+    <div class="container-fluid">
+    
+      <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a [routerLink]="['/']">Home</a></li>
+          <li><a href="#" >About</a></li>
+          <li><a [routerLink]="['/account']">Account</a></li>
+          <li><a [routerLink]="['/register']">Login/Register</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  </ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-grid>
+    <ion-row>
+      <ion-col size='3'>
+
+      </ion-col>
+      <ion-col size='6'>
+        <ion-card>
+          <ion-list>
+            <ion-item lines='none'>
+              <ion-input [(ngModel)]='name' placeholder='Enter name'></ion-input>
+            </ion-item>
+        
+            <ion-item lines='none'>
+              <ion-input [(ngModel)]='org'  placeholder='Name of organization'></ion-input>
+            </ion-item>
+            <ion-item lines='none'>
+              <ion-input [(ngModel)]='mail' type='email'  placeholder='Enter email'></ion-input>
+            </ion-item>
+            <ion-item lines='none'>
+              <ion-input [(ngModel)]='password' type='password'  placeholder='Enter password'></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button size='block' (click)='register()'>Register</ion-button>
+        </ion-card>
+      </ion-col>
+      <ion-col size='3'>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  </ion-content>
+  

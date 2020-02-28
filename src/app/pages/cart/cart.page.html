@@ -1,0 +1,29 @@
+<ion-header role="banner">
+
+  <div class="logo"><a href="#"><img id="logo-navbar-middle" src="http://www.dalro.co.za/images/yootheme/logo.png" width="200" alt="Logo Thing main logo"></a></div>
+  <nav id="navbar-primary" class="navbar" role="navigation">
+    <div class="container-fluid">
+    
+      <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a [routerLink]="['/']">Home</a></li>
+          <li><a href="#" >About</a></li>
+          <li><a [routerLink]="['/account']">Account</a></li>
+          <li><a [routerLink]="['/register']">Login/Register</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  </ion-header>
+
+<ion-content>
+<ion-item *ngFor='let i of bookApi.cart'>
+  {{i.material_info.title}}
+</ion-item>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="ion-text-center">
+  <ion-fab-button (click)='download()'>
+    <ion-icon name="download-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

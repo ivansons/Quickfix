@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{book.volumeInfo.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img class="bookcover" *ngIf='book.volumeInfo.imageLinks' src={{book.volumeInfo.imageLinks.thumbnail}}></ion-img><br>
+ <ion-item lines='none'>
+  <ion-label slot='start' *ngIf='book.saleInfo.saleability!="FOR_SALE"' color='primary'>Not for sale</ion-label>
+  <ion-label slot='start' *ngIf='book.saleInfo.saleability=="FOR_SALE"' color='primary'>{{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}</ion-label>
+  <ion-label slot='end'>{{book.volumeInfo.publishedDate}}</ion-label>
+ </ion-item>
+ <br>Author(s):
+  <ion-label color='danger' *ngFor='let i of book.volumeInfo.authors'><p>{{i}}</p></ion-label>
+  <br>Publisher:
+  <ion-label color='danger'><p>{{book.volumeInfo.publisher}}</p></ion-label>
+
+  <p *ngFor='let i of book.volumeInfo.industryIdentifiers'><b>{{i.type}} : </b>{{i.identifier}}</p>
+  <b>Description:</b>
+  <p>{{book.volumeInfo.description}}</p>
+</ion-content>
+<!-- <ion-footer>
+  <ion-button size='block' (click)='add(i)' mode='md'>Add to cart <ion-icon slot='end' name="cart-outline"></ion-icon></ion-button>
+</ion-footer> -->

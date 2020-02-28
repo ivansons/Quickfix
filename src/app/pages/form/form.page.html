@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Give details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label>Select material type</ion-label>
+    <ion-select mode='ios' [(ngModel)]='data.selectedBooktype' placeholder="Select">
+      <ion-select-option *ngFor='let i of bookApi.bookTypes' value={{i.tid}}>{{i.name}}</ion-select-option>
+    </ion-select>
+  </ion-item><br>
+  <ion-item>
+    <ion-input [(ngModel)]='data.loancollection' placeholder='Number of copies short loan collection' type='number'></ion-input>
+  </ion-item><br>
+  <ion-item>
+    <ion-input [(ngModel)]='data.courses' placeholder='Number of course packs' type='number'></ion-input>
+  </ion-item><br>
+  <ion-item>
+    <ion-input [(ngModel)]='data.studentenrolled' placeholder='Students enrolled in course of study' type='number'></ion-input>
+  </ion-item><br>
+  <ion-item>
+    <ion-input [(ngModel)]='data.usagetype' placeholder='Usage type' type='number'></ion-input>
+  </ion-item><br>
+</ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button size='block' [disabled]='!data.usagetype' (click)='continue()'>Continue</ion-button>
+  </ion-toolbar>
+</ion-footer>
